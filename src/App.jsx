@@ -1,10 +1,7 @@
+import Habit from "./components/habit";
 
 function App() {
-  return (
-    <div className="App">
-      hello world !!
-    </div>
-  );
+  return <Habit/>
 }
 
 export default App;
