@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React, {memo} from 'react';
 
-class HabitForm extends Component {
-  inputRef = React.createRef()
-  onSubmit = e => {
+const HabitForm = memo(props => {
+  const inputRef = React.createRef();
+  
+  const onSubmit = e => {
     e.preventDefault()
-    const name = this.inputRef.current.value
-    name && this.props.onAdd(name)
-    this.inputRef.current.value = '';
-  }
-  render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input 
-          ref={this.inputRef}
-          type="text" 
-          placeholder="습관을 입력하세요." 
-        />
-        <button>추가</button>
-      </form>
-    );
-  }
-}
+    const name = inputRef.current.value;
+    name && props.onAdd(name)
+    inputRef.current.value = '';
+  };
+  return (
+    <form onSubmit={onSubmit}>
+      <input 
+        ref={inputRef}
+        type="text" 
+        placeholder="습관을 입력하세요." 
+      />
+      <button>추가</button>
+    </form>
+  );
+});
 
 export default HabitForm;
